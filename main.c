@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-int regex_func(char regex[100],char input[100]);
+int regex_func(char* regex, char* input);
 
 int main()
 {
@@ -10,6 +10,7 @@ int main()
     scanf("%s",regex);
     scanf("%s", input);
 
+
     printf("%s\n",regex);
     printf("%s\n", input);
 
@@ -18,12 +19,12 @@ int main()
     return 0;
 }
 
-int regex_func(char regex[100],char input[100]){ //make regex function
+int regex_func(char* regex, char* input){ //make regex function
 
     int num = 0; //variable for counting the length of input[100].
 
     for (int i = 0; i < 100; i++){
-        if (input[i] == "\0"){
+        if(input[i] == '\0'){
             num = i;
             break;
         }
@@ -49,5 +50,5 @@ int regex_func(char regex[100],char input[100]){ //make regex function
     }
 
 
-return 0;
+    return 0;
 }

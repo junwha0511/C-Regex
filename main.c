@@ -10,32 +10,45 @@ int main()
     scanf("%s",regex);
     scanf("%s", input);
 
-    printf("a\n");
 
-    int num = 0; //variable for counting the length of input[100].
+    int len_regex = 0; //variable for counting the length of input[100].
+    int len_input = 0;
 
-    for (; num < 100; num++){
-        if (input[num] == '\0'){
+    for (; len_input < 100; len_input++){
+        if (input[len_input] == '\0'){
             break;
         }
     } // Find the null in array using 'for loop'.
 
-    printf("b\n");
-    int len_input = num; // length of input equals to variable 'num'.
-    printf("%d", len_input);
+     for (; len_regex < 100; len_regex++){
+        if (regex[len_regex] == '\0'){
+            break;
+        }
+    } // Find the null in array using 'for loop'.
 
-    for (int num1 = 0; num1+len_input < 100; num1++){ //Find same pattern of input in regex using 'for loop'.
-            int count = num1; //variable using for whether it reaches at the end of length of input.
-            for (int num2 = 0; num2 < len_input; num2++){
-                if (regex[count] != input[num2]) // During for loop, if we found the incorrect component, break for loop.
-                    break;
 
-                if (count == len_input){ //During for loop, if all component was correct, it print the pattern.
-                    printf("%s\n", input );
+    printf("len_input: %d\n", len_input);
+    printf("len_regex: %d\n", len_regex);
+
+    for (int pivot = 0; pivot+len_regex <= len_input; pivot++){ //Find same pattern of input in regex using 'for loop'.
+            printf("pivot value: %d\n", pivot);
+
+            for (int compare_pivot = 0; compare_pivot < len_regex; compare_pivot++){
+                printf("pivot value2: %d\n", pivot);
+
+
+                if (compare_pivot == len_regex){ //During for loop, if all component was correct, it print the pattern.
+                    printf("pivot value: %d compare_pivot value: %d\n", pivot, compare_pivot);
+                    printf("%s\n", regex );
 
                 }
 
-                count++; //plus 1 for count because regex[count] == input[num2]
+
+
+                if (regex[compare_pivot] != input[pivot+compare_pivot]) // During for loop, if we found the incorrect component, break for loop.
+                    printf("pivot value: %d compare_pivot value: %d\n", pivot, compare_pivot);
+                    break;
+
 
             }
 
@@ -45,37 +58,3 @@ int main()
 
     return 0;
 }
-
-/*int regex_func(char regex[100],char input[100]){ //make regex function
-
-    int num = 0; //variable for counting the length of input[100].
-
-    for (int i = 0; i < 100; i++){
-        if (input[i] == "\0"){
-            num = i;
-            break;
-        }
-    } // Find the null in array using 'for loop'.
-    int len_input = num; // length of input equals to variable 'num'.
-
-    for (int num1 = 0; num1+len_input < 100;num++){ //Find same pattern of input in regex using 'for loop'.
-            int count = num1; //variable using for whether it reaches at the end of length of input.
-            for (int num2 = 0; num2 < len_input; num2++){
-                if (regex[count] != input[num2]) // During for loop, if we found the incorrect component, break for loop.
-                    break;
-
-                if (count == len_input){ //During for loop, if all component was correct, it print the pattern.
-                    printf("%s\n", input );
-
-                }
-
-                count++; //plus 1 for count because regex[count] == input[num2]
-
-            }
-
-
-    }
-
-
-return 0;
-}*/
